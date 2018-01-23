@@ -47,6 +47,7 @@ rm -R tempo*
 # # Elimina el header.txt
 rm -R header.txt
 
-# #Se mueve el archivo de carpeta para tener un historico
-# mv $file /c/Users/EnriqueLopez/Documents
+# Configurar el package
+
+
 

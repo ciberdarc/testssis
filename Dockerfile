@@ -1,14 +1,24 @@
+#Configura la instancia de ubuntu
 FROM ubuntu:16.04
 
+#Instala git en la instancia
 RUN apt-get update && apt-get install -y git
+
+#Instala vim
 RUN apt-get install -y vim
+
+#Clona el repositorio de git
 RUN cd /home;git clone https://github.com/ciberdarc/testssis.git
-RUN cd /home/testssis; sh ./NewFormat.sh valuations.csv
-RUN ln -s /home/testssis/NewFormat.sh /NewFormat.sh
+
+#Ejecuta el sh FormatFileValuations.sh y la pasa el paramtro del csv
+RUN cd /home/testssis; sh ./FormatFileValuations.sh valuations.csv
+
+#Crea los links simbolicos
+RUN ln -s /home/testssis/FormatFileValuations.sh /FormatFileValuations.sh
 RUN ln -s /home/testssis/valuations.csv valuations.csv
 RUN ln -s /home/testssis/2valuations.csv 2valuations.csv
 
---Configurar el servicio de ssh
+#Configurar el servicio de ssh
 
 RUN apt-get update && apt-get install -y openssh-server
 RUN mkdir /var/run/sshd
